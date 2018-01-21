@@ -2,6 +2,7 @@ const { BaseHrefWebpackPlugin } = require('base-href-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { ProvidePlugin } = require('webpack');
 const { resolve } = require('path');
+
 const publicPath = process.env.BASE_PATH || '';
 
 module.exports = {
@@ -13,6 +14,19 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.js$/i,
+        exclude: /(node_modules|bower_components)/i,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              '@babel/preset-env',
+              '@babel/preset-stage-0',
+            ],
+          },
+        },
+      },
       {
         test: /\.css$/i,
         use: [
@@ -26,7 +40,7 @@ module.exports = {
         options: {
           limit: 1024,
           name: 'img/[name].[hash:7].[ext]',
-        }
+        },
       },
       {
         test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/i,
@@ -34,7 +48,7 @@ module.exports = {
         options: {
           limit: 10240,
           name: 'media/[name].[hash:7].[ext]',
-        }
+        },
       },
       {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
@@ -42,7 +56,7 @@ module.exports = {
         options: {
           limit: 10240,
           name: 'fonts/[name].[hash:7].[ext]',
-        }
+        },
       },
     ],
   },
@@ -59,7 +73,13 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: './app/index.html',
-      favicon: './app/favicon.ico'
+      favicon: './app/favicon.ico',
+      minify: !!publicPath ? {
+        collapseWhitespace: true,
+        removeComments: true,
+        minifyCSS: true,
+        minifyJS: true,
+      } : false,
     }),
     // 2:
     new ProvidePlugin({

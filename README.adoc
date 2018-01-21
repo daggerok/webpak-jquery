@@ -1,4 +1,4 @@
-= webpack + jquery + materialize-css
+= webpack + jquery + materialize-css image:https://travis-ci.org/daggerok/webpak-jquery.svg?branch=master["Build Status", link="https://travis-ci.org/daggerok/webpak-jquery"]
 
 This repo contains worked webpack configuration for jquery (and for materialize-css) usage.
 

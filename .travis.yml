@@ -15,7 +15,7 @@ before_script:
 script:
 - yarn -i
 - yarn build
-- yarn preghpages
+- yarn predeploy
 cache:
   directories:
   - $HOME/.npm
