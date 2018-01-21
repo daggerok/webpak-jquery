@@ -2,8 +2,10 @@
 
 This repo contains worked webpack configuration for jquery (and for materialize-css) usage.
 
-.package.json
-[source,javascript]
+=== webpack + jquery + materialize-css
+
+.vendors
+[source,bash]
 ----
 yarn add materialize-css jquery hammerjs
 ----
@@ -44,3 +46,93 @@ import 'materialize-css/dist/js/materialize.js';
 
 $(".button-collapse").sideNav();
 ----
+
+=== babel-loader@8 + @core/babel + @core/babel-preset-env + @core/babel-preset-stage-0
+
+.package.json
+[source,json]
+----
+  "devDependencies": {
+    "@babel/core": "7.0.0-beta.38",
+    "@babel/preset-env": "7.0.0-beta.38",
+    "@babel/preset-stage-0": "7.0.0-beta.38",
+    "babel-loader": "8.0.0-beta.0",
+    "webpack": "3.10.0"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-stage-0"
+    ]
+  }
+----
+
+.webpack.config.js
+[source,javascript]
+----
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.js$/i,
+        exclude: /(node_modules|bower_components)/i,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              '@babel/preset-env',
+              '@babel/preset-stage-0',
+            ],
+          },
+        },
+      },
+    ],
+  },
+  // ...
+};
+----
+
+=== webpack minify html
+
+.webpack.config.js
+[source,javascript]
+----
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const publicPath = process.env.BASE_PATH || '';
+
+module.exports = {
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './app/index.html',
+      favicon: './app/favicon.ico',
+      minify: !!publicPath ? {
+        collapseWhitespace: true,
+        removeComments: true,
+        minifyCSS: true,
+        minifyJS: true,
+      } : false,
+    }),
+  ],
+  // ...
+};
+----
+
+.package.json
+[source,json]
+----
+  "devDependencies": {
+    "cross-env": "5.1.3",
+    "html-webpack-plugin": "2.30.1",
+    "webpack": "3.10.0"
+  },
+  "scripts": {
+    "build": "webpack -p",
+    "gh-pages": "cross-env BASE_PATH='/webpak-jquery/' yarn build"
+  }
+----
+
+links:
+
+. link:https://github.com/Dogfalo/materialize/issues/4521#issuecomment-293172209[issue solved]
+. link:https://github.com/babel/babel-loader[babel-loader]
+

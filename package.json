@@ -31,7 +31,7 @@
     "clean": "rimraf -rf dist",
     "start": "webpack-dev-server",
     "prebuild": "yarn clean",
-    "build": "webpack -p",
+    "build": "webpack -p --progress",
     "serve": "serve -CSsp 3000 dist",
     "predeploy": "npm-run-all predeploy:*",
     "predeploy:build": "cross-env BASE_PATH='/webpak-jquery/' yarn build",
