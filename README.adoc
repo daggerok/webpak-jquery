@@ -1,0 +1,46 @@
+= webpack + jquery + materialize-css
+
+This repo contains worked webpack configuration for jquery (and for materialize-css) usage.
+
+.package.json
+[source,javascript]
+----
+yarn add materialize-css jquery hammerjs
+----
+
+.webpack.config.js
+[source,javascript]
+----
+const { ProvidePlugin } = require('webpack');
+const { resolve } = require('path');
+
+module.exports = {
+  // ...
+  resolve: {
+    resolve: {
+      alias: {
+        'jquery': resolve('node_modules/jquery/dist/jquery.js'),
+      },
+    },
+  },
+  plugins: [
+    new ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.$': 'jquery',
+      'window.jQuery': 'jquery',
+    }),
+  ],
+  // ...
+};
+----
+
+.main.js
+[source,javascript]
+----
+import $ from 'jquery';
+import 'hammerjs/hammer.js';
+import 'materialize-css/dist/js/materialize.js';
+
+$(".button-collapse").sideNav();
+----

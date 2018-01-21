@@ -1,0 +1,23 @@
+group: travis_lts
+env:
+  global:
+    TERM=dumb
+language: node_js
+node_js:
+- 6
+- 7
+- 8
+- 9
+- lts/*
+install: true
+before_script:
+- npm i -g yarn
+script:
+- yarn -i
+- yarn build
+- yarn preghpages
+cache:
+  directories:
+  - $HOME/.npm
+  - $HOME/.nvm
+  - node_modules

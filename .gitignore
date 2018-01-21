@@ -1,0 +1,13 @@
+node_modules
+dist
+build
+.gradle
+target
+.idea
+*.iml
+*.ipr
+*.iws
+*.log*
+yarn.lock
+package-lock.json
+.DS_Store
