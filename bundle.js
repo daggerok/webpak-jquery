@@ -13554,22 +13554,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_hammerjs_hammer_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_hammerjs_hammer_js__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_materialize_css_dist_js_materialize_js__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_materialize_css_dist_js_materialize_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_materialize_css_dist_js_materialize_js__);
-// yarn add -E material-design-icons
-// import 'material-design-icons/iconfont/material-icons.css';
+// package with app: `yarn add -E material-design-icons`
+// and then: `import 'material-design-icons/iconfont/material-icons.css';`
+
+
+// 3: you don't need this anymore: `const $ = window.jQuery = window.$ = require("jquery");`
 
 
 
-// 3:
 
-// const $ = window.jQuery = window.$ = require("jquery");
-
-
-
-__WEBPACK_IMPORTED_MODULE_2_jquery___default()('select').material_select();
+// $('select').material_select();
 __WEBPACK_IMPORTED_MODULE_2_jquery___default()(".button-collapse").sideNav();
-__WEBPACK_IMPORTED_MODULE_2_jquery___default()('button.waves-effect').click(() => {
-  __WEBPACK_IMPORTED_MODULE_2_jquery___default()('#message').hide().text('Hello!').show(1000);
-});
+
+__WEBPACK_IMPORTED_MODULE_2_jquery___default()('#message').hide()
+             .text('Hello!')
+             .show(1000);
 
 
 /***/ }),
@@ -13835,7 +13834,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "/* CSS Grid: begin */\n\n.grid-container {\n  width: 100vw;\n  height: 100vh;\n  display: grid;\n  grid-template-columns: 1fr;\n  grid-template-rows: 1fr 10fr 1fr;\n  grid-template-areas:\n      \"grid-header\"\n      \"grid-content\"\n      \"grid-footer\";\n}\n\n.grid-header {\n  grid-area: grid-header;\n}\n\n.grid-content {\n  grid-area: grid-content;\n}\n\n.grid-footer {\n  grid-area: grid-footer;\n}\n\n/* CSS Grid: end */\n\n.grid-footer {\n  padding: 0;\n}\n\n.footer-copyright {\n  height: 100%;\n  text-align: center;\n}\n", ""]);
+exports.push([module.i, "/* CSS Grid: begin */\n\n.grid-container {\n  width: 100vw;\n  height: 100vh;\n  display: grid;\n  grid-template-columns: 1fr;\n  grid-template-rows: 1fr 10fr 1fr;\n  grid-template-areas: \"grid-header\" \"grid-content\" \"grid-footer\";\n}\n\n.grid-header {\n  grid-area: grid-header;\n}\n\n.grid-content {\n  grid-area: grid-content;\n}\n\n.grid-footer {\n  grid-area: grid-footer;\n}\n\n/* CSS Grid: end */\n\n.grid-footer {\n  padding: 0;\n}\n\n.footer-copyright {\n  height: 100%;\n  text-align: center;\n}\n", ""]);
 
 // exports
 
